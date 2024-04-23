@@ -1,0 +1,118 @@
+package mmmmm;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;  
+public class ukolnebe {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 
+		        JFrame f= new JFrame();  
+		        
+		        DefaultListModel<String> l1 = new DefaultListModel<>();  
+		          l1.addElement("Item1");  
+		          l1.addElement("Item2");  
+		          l1.addElement("Item3");  
+		          l1.addElement("Item4");  
+		          JList<String> list = new JList<>(l1);  
+		          list.setBounds(100,100, 175,175);  
+		          
+		          DefaultListModel<String> l2 = new DefaultListModel<>();  
+		           
+		          JList<String> list2 = new JList<>(l2);  
+		          list2.setBounds(300,100, 175,175);  
+		          
+		          
+		          
+		          JLabel label2 = new JLabel("SPLNENE UKOLY");              
+		          label2.setBounds(300, 50, 155, 55);
+		          f.add(label2);
+		          
+		          
+		          JLabel label = new JLabel("MOJE UKOLY");              
+		          label.setBounds(100, 50, 155, 55);
+		          f.add(label);
+		          
+		          
+		          JTextField a = new JTextField();
+		          a.setBounds(400,400, 100,55);
+		          f.add(a);
+		          
+		          JButton button = new JButton();
+		          JButton button1 = new JButton();
+		          JButton button2 = new JButton();
+		          
+		          button.setText("Odstraň");  
+		          button.setBounds(200,300, 100,55);
+		          f.add(button);
+		          
+		          button1.setText("Splněno");  
+		          button1.setBounds(300,300, 100,55);
+		          f.add(button1);
+		          
+		          button2.setText("Přidej");  
+		          button2.setBounds(400,300, 100,55);
+		          f.add(button2);
+		          
+		          button2.addActionListener(new ActionListener(){  
+			            public void actionPerformed(ActionEvent e){  
+			            	
+			            	String s1=a.getText();
+			            	l1.addElement(s1);
+			    	        
+			            	
+			            }  
+			            });  
+		          
+		          
+		          
+		          
+		          
+		          button.addActionListener(new ActionListener(){  
+		        	    public void actionPerformed(ActionEvent e){  
+		        	    	String data = "";
+		        	        if (list.getSelectedIndex() != -1)  { 
+		        	        	int selectedIndex = list.getSelectedIndex();
+		        	        	l1.removeElementAt(selectedIndex);
+		        	        	
+		        	        }
+		        	    }  
+		        	    });  
+		          button.addActionListener(new ActionListener(){  
+		        	    public void actionPerformed(ActionEvent e){  
+		        	    	String data = "";
+		        	        if (list2.getSelectedIndex() != -1)  { 
+		        	        	int selectedIndex2 = list2.getSelectedIndex();
+		        	        	l2.removeElementAt(selectedIndex2);
+		        	        	
+		        	        }
+		        	    }  
+		        	    });  
+		          
+		          
+		          
+		          button1.addActionListener(new ActionListener() {  
+		        	    public void actionPerformed(ActionEvent e) {  
+		        	        String selected = list.getSelectedValue();
+		        	        if (selected != null) {
+		        	            l2.addElement(selected);
+		        	            l1.removeElement(selected); 
+		        	        }
+		        	    }  
+		        	});
+
+		          
+		          
+		          
+		          
+		          f.add(list2);
+		          f.add(list);  
+		          f.setSize(700,800);  
+		          f.setLayout(null);  
+		          f.setVisible(true);  
+		          f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+	}
+
+}
